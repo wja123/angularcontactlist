@@ -1,0 +1,26 @@
+body{
+  background-color: #ADBDCE;
+}
+.input-col{
+  border: 2px solid black;
+  padding-bottom:1%;
+  background-color: #F2F3F4;
+}
+
+.header-1{
+  color:#466481;
+}
+
+.header-2{
+  margin:0;
+  padding:0;
+  padding-top:1%;
+  padding-bottom:2%;
+  color:#466481;
+
+
+}
+
+.button-row{
+  padding-top: 4%;
+}

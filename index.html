@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
+  <title>Document</title>
+</head>
+<body ng-app="contApp" ng-controller="main-controller">
+  <div class="container">
+
+    <div class="top-row">
+
+      <div class="header-1">
+        <h1>Contact List</h1>
+      </div>
+
+      <div class="header-2">
+        <h3>Create, Store and Edit your Contacts</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 input-col">
+        <h5>
+          Input ContactName
+        </h5>
+        <input type="text" ng-model="newcontact.name">
+        <h5>
+          Input Phone Number
+        </h5>
+        <input type="text" ng-model="newcontact.phone">
+        <h5>
+          Input eMail Address
+        </h5>
+        <input type="text" ng-model="newcontact.email">
+        <div class ="button-row">
+         <button class ="btn" ng-click="addContact()">Add Contact</button>  
+       </div>
+     </div>
+
+
+     <div class="col-md-9" class ="input-col">
+      <table class ="table table-hover">
+        <thead>
+          <tr>
+            <td>
+              Contact Name
+            </td>
+            <td>
+              Contact Number
+            </td>
+            <td>
+              Email Address
+            </td>
+            <td>
+              Delete
+            </td>
+            <td>
+              Edit
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in contactList track by $index">
+            <td>
+              {{contact.name}}
+            </td>
+            <td>
+              {{contact.phone}}
+            </td>
+            <td>
+              {{contact.email}}
+            </td>
+            <td>
+              <span class="glyphicon glyphicon-remove" ng-click="clickRemove()"></span>
+            </td>
+            <td>
+              <span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal" ng-click="clickEdit()"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Edit Contact</h4>
+            </div>
+            <div class="modal-body">
+              <h5>
+                Contact Name
+              </h5>
+              <input class ="upname" type="text" ng-model="updateval.name">
+              <h5>
+                Phone Number
+              </h5>
+              <input class ="upphone" type="text" ng-model="updateval.phone">
+              <h5>
+                eMail Address
+              </h5>
+              <input class ="upemail" type="text" ng-model="updateval.email">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="clickUpdate()">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
